@@ -22,6 +22,7 @@ int main(void)
 	return 0;
 }
 
+// how I did it
 int euclid(int x, int y)
 {
 	int remainder = -1;	// arbitrary value so we enter while loop
@@ -40,6 +41,7 @@ int euclid(int x, int y)
 	}
 }
 
+// how it should be done!
 int euclid_rec(int x, int y)
 {
 	if(x == 0)
