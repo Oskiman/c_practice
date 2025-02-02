@@ -8,9 +8,9 @@ int main(void)
 	retval = printf("Hello World!\n");
 	printf("%d\n", retval);
 
-	char input[20];
+	char input[20];			// size is arbitrary
 	printf("Enter a word: ");
-	fgets(input, 19, stdin);
+	fgets(input, 19, stdin);	// leave space for the '\0'
 	retval = printf("%s", input);
 	printf("%d\n", retval);
 
