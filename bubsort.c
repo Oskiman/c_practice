@@ -11,10 +11,9 @@ int main(void)
 	int unsorted_array[10] = {10, 3, 5, 1, 2, 9, 4, 7, 6, 8};		// array to sort
 	int array_length = sizeof(unsorted_array) / sizeof(unsorted_array[0]);	// get length of array
 
-
-	for(int i = 0; i < array_length - 1; i++)
+	for(int i = 0; i < array_length; i++)
 	{
-		for(int j = 0; j < array_length - i - 1; j++)
+		for(int j = 0; j < (array_length - 1); j++)
 		{
 			if(unsorted_array[j] > unsorted_array[j + 1])
 			{
