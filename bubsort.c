@@ -1,5 +1,5 @@
 // Bubble sort
-
+#include <stdbool.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -19,17 +19,20 @@ int main(void)
 
 void bubble_sort(int array[], int array_length)
 {
-	
-	for(int i = 0; i < array_length; i++)
-	{
+	bool swapped = false;		// if array is fully sorted, we can end early
+	int i = 0;
+	do{
+		swapped = false;	// set to false for every pass
 		for(int j = 0; j < (array_length - i - 1); j++) // after each pass, highest value will be in correct place
 		{						// with -i we reduce the length of the search by 1 each pass
 			if(array[j] > array[j + 1])
 			{
 				swap(&array[j], &array[j + 1]);
+				swapped = true;		// we have swapped 2 numbers this pass
 			}
 		}
-	}
+	i++;
+	}while(swapped); // continue as long as we swap numbers each pass
 }
 
 void swap(int *x, int *y)
