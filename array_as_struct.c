@@ -10,6 +10,7 @@ typedef struct{
 }Int32Array;
 
 void IterateItems(Int32Array array);
+int Int32Array_Get(Int32Array array, int32_t index);
 
 int main(void)
 {
@@ -20,9 +21,22 @@ int main(void)
 
 void IterateItems(Int32Array array)
 {
-	for(int i = 0; i < array.length; i++)
+	for(int i = 0; i <= array.length; i++)
 	{
-		//iterate
+		int item = Int32Array_Get(array, i);
 	}
+
+}
+
+
+// function for bounds checking of array, called by IterateItems() 
+int Int32Array_Get(Int32Array array, int32_t index)
+{
+	if(index >= 0 && index < array.length)
+	{
+		return array.items[index];
+	}
+
+	return 0;
 
 }
