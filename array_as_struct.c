@@ -19,6 +19,9 @@ int main(void)
 	return 0;
 }
 
+// The bounds checking function Int32Array_Get() is called on every iteration
+// but as both it and IterateItems() are both countinf from 0 to length - 1
+// compilers will optimise *waves hand*, stuff
 void IterateItems(Int32Array array)
 {
 	for(int i = 0; i <= array.length; i++)
