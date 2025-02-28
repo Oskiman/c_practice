@@ -20,7 +20,7 @@ int main(void)
 }
 
 // The bounds checking function Int32Array_Get() is called on every iteration
-// but as both it and IterateItems() are both countinf from 0 to length - 1
+// but as both it and IterateItems() are both counting from 0 to length - 1
 // compilers will optimise *waves hand*, stuff
 void IterateItems(Int32Array array)
 {
