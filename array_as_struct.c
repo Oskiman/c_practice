@@ -24,7 +24,7 @@ int main(void)
 // compilers will optimise *waves hand*, stuff
 void IterateItems(Int32Array array)
 {
-	for(int i = 0; i <= array.length; i++)
+	for(int i = 0; i < array.length; i++)
 	{
 		int item = Int32Array_Get(array, i);
 	}
