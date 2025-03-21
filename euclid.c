@@ -42,6 +42,7 @@ int euclid(int x, int y)
 }
 
 // how it should be done!
+// I cannot find/remember the source of this
 int euclid_rec(int x, int y)
 {
 	if(x == 0)
