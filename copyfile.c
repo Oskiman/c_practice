@@ -1,6 +1,6 @@
 // copyfile.c
 // program copies contents of one file to another
-
+// if file to write to does not exist, it will be created
 
 #include <stdio.h>
 
@@ -19,8 +19,10 @@ int main()
 	fpw = fopen(fwname, "w");		// open file to write to
     	
     	while((ch = getc(fp)) != EOF)
+	{
         	fputc(ch, fpw);		// copy to file to write to
-
+		putchar(ch);		// send output to screen as well
+	}
 	// close files
         fclose(fp);     
 	fclose(fpw);
