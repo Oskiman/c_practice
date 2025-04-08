@@ -18,6 +18,7 @@ int main(void)
 	printf("y: %d\n", ptr_to_t1->y);
 
 	// use dereference(*) and dot(.) operators
+	// note: dot(.) operator has higher precedence so we use parens
 	printf("z: %d\n", (*ptr_to_t1).z);
 
 	return 0;
