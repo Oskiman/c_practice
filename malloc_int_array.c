@@ -11,7 +11,7 @@ int main(void)
 
 	// allocate enough memory for array
 	//array_pointer = (int*)malloc(num_elements * sizeof(int));
-	// apparently casting return value of malloc is a no-no
+	// apparently casting return value of malloc is a no-no unless you want C++ compatability
 	// also good practice to use the pointer contents as size
 	// in case the type is changed at some point
 	array_pointer = malloc(num_elements * sizeof(*array_pointer));
