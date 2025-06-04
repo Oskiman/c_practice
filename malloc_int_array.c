@@ -10,8 +10,11 @@ int main(void)
 	scanf("%d", &num_elements);
 
 	// allocate enough memory for array
-	array_pointer = (int*)malloc(num_elements * sizeof(int));
-
+	//array_pointer = (int*)malloc(num_elements * sizeof(int));
+	// apparently casting return value of malloc is a no-no
+	// also good practice to use the pointer contents as size
+	// in case the type is changed at some point
+	array_pointer = malloc(num_elements * sizeof(*array_pointer));
 	// check we have enough memory
 	if(array_pointer == NULL)
 	{
