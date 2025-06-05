@@ -24,14 +24,14 @@ int main(void)
 
 	// output array
 	for(int i = 0; i < num_elements; i++)
-		//printf("%d ", array_pointer[i]);
+		//printf("%d ", array_pointer[i]);	// experimenting with output, will find out which, if any, is more correct
 		printf("%d ", *(array_pointer + i));
 
 	printf("\n");
 
 	// reallocate array
 	int *new_ptr;
-	new_ptr = (int*)realloc(array_pointer, sizeof(int) * 2);	
+	new_ptr = (int*)realloc(array_pointer, sizeof(int) * (num_elements * 2));	// make array twice the size (I think!)	
 	if(new_ptr == NULL)
 	{
 		printf("realloc failed!\n");
@@ -39,7 +39,7 @@ int main(void)
 	}
 
 	// output realloc'ed array
-	
+	//	
 
 	// if realloc doesn't need to move data, we free the original memory
 	if(!new_ptr)
