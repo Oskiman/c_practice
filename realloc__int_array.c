@@ -38,16 +38,25 @@ int main(void)
 		return 1;
 	}
 
-	// output realloc'ed array
-	//	
+	// assign values to the realloc'ed elements
+	for(int i = num_elements; i < num_elements * 2; i++)
+	{
+		new_ptr[i] = i;
+	}
 
-	// if realloc doesn't need to move data, we free the original memory
+	// output realloc'ed array
+	for(int i = 0; i < num_elements * 2; i++)
+		printf("%d ", *(new_ptr + i));
+
+	printf("\n");
+
+	// if realloc doesn't need to move data, or fails, we free the original memory
 	if(!new_ptr)
 	{
 		free(array_pointer);
 	}
 	
-	// realloc automatically frees the old pointer if it needs to move data
+	// realloc automatically frees the old pointer if it works
 	// so we just need to free the realloc'ed memory
 	free(new_ptr);
 
