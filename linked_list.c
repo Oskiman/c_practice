@@ -36,7 +36,7 @@ int main(void)
 
 	// output head & tail data values
 	node_t* current = head;		// create node to walk the list
-	while(current->next != NULL)
+	while(current != NULL)
 	{
 		printf("%d\n", current->data);
 		current = current->next;
