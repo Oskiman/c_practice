@@ -21,6 +21,15 @@ int main(void)
 	head->data = 1;
 	head->next = NULL;
 
+	// create tail of linked list
+	node_t* tail = NULL;
+	tail = (node_t*)malloc(sizeof(node_t));
+	if(tail == NULL)
+	{
+		return 1;
+	}
 
+	tail->data = 3;
+	tail->next = NULL;
 	return 0;
 }
