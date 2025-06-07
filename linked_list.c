@@ -5,7 +5,6 @@
 typedef struct node{
 	int data;
 	struct node* next;
-	struct node* previous;
 } node_t;
 
 int main(void)
@@ -34,7 +33,6 @@ int main(void)
 
 	// join head & tail
 	head->next = tail;
-	//tail->previous = head->next;
 
 	// output head & tail data values
 	node_t* current = head;		// create node to walk the list
@@ -53,8 +51,6 @@ int main(void)
 	}
 
 	middle->data = 2;
-	//middle->previous = head->next;
-	//middle->next = tail;
 	head->next = middle;
 	middle->next = tail;
 
