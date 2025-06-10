@@ -1,9 +1,10 @@
 // 8 x 8 board
 // dynamically allocates and outputs an 8 by 8 'board'
-// not much but its a start
 // checked for leaks with valgrind --leak-check=yes ./8by8board
 #include <stdio.h>
 #include <stdlib.h>
+
+void print_board(char** board, int rows, int columns);
 
 int main(void)
 {
@@ -25,12 +26,12 @@ int main(void)
 		if(board[i] == NULL)
 		{
 			printf("Memory allocation failed!\n");
-			//free
+			//free columns
 			for(int j = 0; j < cols; j++)
 			{
 				free(board[j]);
 			}
-			free(board);
+			free(board);	// free base pointer
 			return 1;
 		}
 	}
@@ -45,7 +46,23 @@ int main(void)
 
 	}
 
-	// output board
+	print_board(board, rows, cols);
+
+	// free columns
+	for(int i = 0; i < rows; i++)
+	{
+		free(board[i]);
+	}
+
+	// free highest level pointer
+	free(board);
+
+	return 0;
+}
+
+void print_board(char** board, int rows, int cols)
+{
+// output board
 	for(int i = 0; i < cols; i++)
 	{
 		for(int j = 0; j < rows; j++)
@@ -55,22 +72,5 @@ int main(void)
 
 		printf("\n");
 	}
-	// free columns
-	for(int i = 0; i < rows; i++)
-	{
-		free(board[i]);
-	}
-	//free(board[0]);
-	//free(board[1]);
-	//free(board[2]);
-	//free(board[3]);
-	//free(board[4]);
-	//free(board[5]);
-	//free(board[6]);
-	//free(board[7]);
 
-	// free highest level pointer
-	free(board);
-
-	return 0;
 }
