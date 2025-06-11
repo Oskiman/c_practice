@@ -8,6 +8,10 @@ typedef struct node{
 	struct node* next;
 } node_t;
 
+// TODO: function to create a new node
+// TODO: function to output node values
+// TODO: function to remove a given node
+
 int main(void)
 {
 	//create head of linked list
