@@ -30,7 +30,6 @@ int main(void)
 	}
 
 	tail->data = 3;
-	//tail->prev = head;
 	tail->next = NULL;
 
 	// join head & tail
@@ -38,12 +37,15 @@ int main(void)
 	tail->prev = head;
 
 	// output head & tail data values
+	printf("head & tail\n");
 	node_t* current = head;		// create node to walk the list
 	while(current != NULL)
 	{
 		printf("%d\n", current->data);
 		current = current->next;
 	}
+
+	printf("\n");
 
 	// insert a node inbetween head & tail
 	node_t* middle = NULL;
@@ -60,12 +62,24 @@ int main(void)
 	tail->prev = middle;
 
 	// output complete list
+	printf("complete list\n");
 	current = head;		//reuse previously created node
 	while(current != NULL)
 	{
 		printf("%d\n", current->data);
 		current = current->next;	// move to next node
 		
+	}
+
+	printf("\n");
+
+	// output list in reverse
+	printf("complete list in reverse\n");
+	current = tail;		// I'm getting my moneys worth out of this pointer
+	while(current != NULL)
+	{
+		printf("%d\n", current->data);
+		current = current->prev;	// move to previous node
 	}
 
 	return 0;
