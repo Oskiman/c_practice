@@ -8,10 +8,11 @@ typedef struct node{
 	struct node* next;
 } node_t;
 
+void print_forward(node_t* node);
+
 // TODO: function to create a new node
 // TODO: function to output node values
 // TODO: function to remove a given node
-// NOTE: if moving to functions, will I need to use a new pointer each time to walk the list?
 
 int main(void)
 {
@@ -66,17 +67,7 @@ int main(void)
 	middle->next = tail;
 	tail->prev = middle;
 
-	// output complete list
-	printf("complete list\n");
-	current = head;		//reuse previously created node
-	while(current != NULL)
-	{
-		printf("%d\n", current->data);
-		current = current->next;	// move to next node
-		
-	}
-
-	printf("\n");
+	print_forward(head);
 
 	// output list in reverse
 	printf("complete list in reverse\n");
@@ -88,4 +79,19 @@ int main(void)
 	}
 
 	return 0;
+}
+
+void print_forward(node_t* node)
+{
+	printf("complete list\n");
+	node_t* current;
+	current = node;
+	while(current != NULL)
+	{
+		printf("%d\n", current->data);
+		current = current->next;	// move to next node
+		
+	}
+
+	printf("\n");
 }
