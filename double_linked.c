@@ -45,17 +45,6 @@ int main(void)
 	head->next = tail;
 	tail->prev = head;
 
-	// output head & tail data values
-	//printf("head & tail\n");
-	//node_t* current = head;		// create node to walk the list
-	//while(current != NULL)
-	//{
-	//	printf("%d\n", current->data);
-	//	current = current->next;
-	//}
-
-	//printf("\n");
-
 	// insert a node inbetween head & tail
 	node_t* middle = NULL;
 	middle = (node_t*)malloc(sizeof(node_t));
@@ -75,6 +64,10 @@ int main(void)
 
 	node_t* fourth = create_node(4);
 	node_t* fifth = create_node(5);
+
+	// test we have created nodes
+	printf("%d\n", fourth->data);
+	printf("%d\n", fifth->data);
 
 	// remember to free nodes
 	// will refactor this later
@@ -127,7 +120,7 @@ node_t* create_node(int data)
 	}
 
 	node->data = data;
-	node->next = NULL;
+	node->next = NULL;	// should this point to next?
 
 	return node;
 }
