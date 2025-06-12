@@ -9,6 +9,7 @@ typedef struct node{
 } node_t;
 
 void print_forward(node_t* node);
+void print_reverse(node_t* node);
 
 // TODO: function to create a new node
 // TODO: function to output node values
@@ -68,15 +69,16 @@ int main(void)
 	tail->prev = middle;
 
 	print_forward(head);
+	print_reverse(tail);
 
 	// output list in reverse
-	printf("complete list in reverse\n");
-	current = tail;		// I'm getting my moneys worth out of this pointer
-	while(current != NULL)
-	{
-		printf("%d\n", current->data);
-		current = current->prev;	// move to previous node
-	}
+	//printf("complete list in reverse\n");
+	//current = tail;		// I'm getting my moneys worth out of this pointer
+	//while(current != NULL)
+	//{
+	//	printf("%d\n", current->data);
+	//	current = current->prev;	// move to previous node
+	//}
 
 	return 0;
 }
@@ -91,6 +93,20 @@ void print_forward(node_t* node)
 		printf("%d\n", current->data);
 		current = current->next;	// move to next node
 		
+	}
+
+	printf("\n");
+}
+
+void print_reverse(node_t* node)
+{
+	printf("complete list in reverse\n");
+	node_t* current;
+	current = node;
+	while(current != NULL)
+	{
+		printf("%d\n", current->data);
+		current = current->prev;	// move to previous node
 	}
 
 	printf("\n");
