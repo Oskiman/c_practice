@@ -11,6 +11,7 @@ typedef struct node{
 // TODO: function to create a new node
 // TODO: function to output node values
 // TODO: function to remove a given node
+// NOTE: if moving to functions, will I need to use a new pointer each time to walk the list?
 
 int main(void)
 {
