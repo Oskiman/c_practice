@@ -15,6 +15,7 @@ node_t* create_node(int data);
 // TODO: function to create a new node
 // NOTE: once a node is created it will need to be added to the list
 // TODO: function to remove a given node
+// TODO: refactor code to free nodes - will be part of remove_node() later
 
 int main(void)
 {
@@ -45,15 +46,15 @@ int main(void)
 	tail->prev = head;
 
 	// output head & tail data values
-	printf("head & tail\n");
-	node_t* current = head;		// create node to walk the list
-	while(current != NULL)
-	{
-		printf("%d\n", current->data);
-		current = current->next;
-	}
+	//printf("head & tail\n");
+	//node_t* current = head;		// create node to walk the list
+	//while(current != NULL)
+	//{
+	//	printf("%d\n", current->data);
+	//	current = current->next;
+	//}
 
-	printf("\n");
+	//printf("\n");
 
 	// insert a node inbetween head & tail
 	node_t* middle = NULL;
@@ -71,6 +72,17 @@ int main(void)
 
 	print_forward(head);
 	print_reverse(tail);
+
+	node_t* fourth = create_node(4);
+	node_t* fifth = create_node(5);
+
+	// remember to free nodes
+	// will refactor this later
+	free(head);
+	free(middle);
+	free(tail);
+	free(fourth);
+	free(fifth);
 
 	return 0;
 }
@@ -117,5 +129,5 @@ node_t* create_node(int data)
 	node->data = data;
 	node->next = NULL;
 
-
+	return node;
 }
