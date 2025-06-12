@@ -10,9 +10,10 @@ typedef struct node{
 
 void print_forward(node_t* node);
 void print_reverse(node_t* node);
+node_t* create_node(int data);
 
 // TODO: function to create a new node
-// TODO: function to output node values
+// NOTE: once a node is created it will need to be added to the list
 // TODO: function to remove a given node
 
 int main(void)
@@ -71,15 +72,6 @@ int main(void)
 	print_forward(head);
 	print_reverse(tail);
 
-	// output list in reverse
-	//printf("complete list in reverse\n");
-	//current = tail;		// I'm getting my moneys worth out of this pointer
-	//while(current != NULL)
-	//{
-	//	printf("%d\n", current->data);
-	//	current = current->prev;	// move to previous node
-	//}
-
 	return 0;
 }
 
@@ -110,4 +102,20 @@ void print_reverse(node_t* node)
 	}
 
 	printf("\n");
+}
+
+node_t* create_node(int data)
+{
+	node_t* node = NULL;
+	node = (node_t*)malloc(sizeof(node_t));
+	if(node == NULL)
+	{
+		printf("Error, cannot create node\n");
+		exit(0);
+	}
+
+	node->data = data;
+	node->next = NULL;
+
+
 }
