@@ -11,6 +11,7 @@ typedef struct node{
 void print_forward(node_t* node);
 void print_reverse(node_t* node);
 node_t* create_node(int data);
+node_t* add_to_list(node_t* node);
 
 // TODO: function to create a new node
 // NOTE: once a node is created it will need to be added to the list
@@ -120,7 +121,12 @@ node_t* create_node(int data)
 	}
 
 	node->data = data;
-	node->next = NULL;	// should this point to next?
+	node->next = NULL;
 
 	return node;
+}
+
+node_t* add_to_list(node_t* node)
+{
+	
 }
