@@ -22,16 +22,12 @@ int main(void)
 	node_t* list = create_node(6, create_node(7, create_node(8, 0)));
 
 	node_t* current = list;
-	while(current->next != NULL)
-	{
-		printf("%d\n", current->data);
-		current = current->next;
 
-	}
-
+	print_forward(list);
+	printf("\n");
+	print_reverse(list);
 
 	// remember to free nodes
-	// will refactor this later
 	free(list);
 
 	return 0;
