@@ -10,8 +10,9 @@ typedef struct node{
 
 void print_forward(node_t* node);
 void print_reverse(node_t* node);
-node_t* create_node(int data);
-node_t* add_to_list(node_t* node);
+node_t* create_node(int data, node_t* next);
+node_t* add_to_list(node_t* node, int data);
+void remove_node(node_t* node);
 
 // TODO: function to create a new node
 // NOTE: once a node is created it will need to be added to the list
@@ -63,8 +64,8 @@ int main(void)
 	print_forward(head);
 	print_reverse(tail);
 
-	node_t* fourth = create_node(4);
-	node_t* fifth = create_node(5);
+	node_t* fourth = create_node(4, 0);
+	node_t* fifth = create_node(5, 0);
 
 	// test we have created nodes
 	printf("%d\n", fourth->data);
@@ -110,7 +111,7 @@ void print_reverse(node_t* node)
 	printf("\n");
 }
 
-node_t* create_node(int data)
+node_t* create_node(int data, node_t* next)
 {
 	node_t* node = NULL;
 	node = (node_t*)malloc(sizeof(node_t));
@@ -121,12 +122,17 @@ node_t* create_node(int data)
 	}
 
 	node->data = data;
-	node->next = NULL;
+	node->next = next;
 
 	return node;
 }
 
-node_t* add_to_list(node_t* node)
+node_t* add_to_list(node_t* node, int data)
 {
 	
+}
+
+void remove_node(node_t* node)
+{
+
 }
