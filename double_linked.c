@@ -13,22 +13,24 @@ void print_reverse(node_t* node);
 node_t* create_node(int data, node_t* next);
 node_t* add_to_list(node_t* node, int data);
 void remove_node(node_t* node);
+void free_list(node_t* node);
 
 // TODO: function to remove a given node
 // TODO: refactor code to free nodes - will be part of remove_node() later
+// TODO: print list in reverse
+// TODO: function to free all nodes
 
 int main(void)
 {
-	node_t* list = create_node(6, create_node(7, create_node(8, 0)));
-
-	node_t* current = list;
+	// create a list
+	node_t* list = create_node(1, create_node(2, create_node(3, NULL)));
 
 	print_forward(list);
 	printf("\n");
 	print_reverse(list);
 
 	// remember to free nodes
-	free(list);
+	free_list(list);
 
 	return 0;
 }
@@ -48,7 +50,7 @@ void print_forward(node_t* node)
 	printf("\n");
 }
 
-void print_reverse(node_t* node)
+void print_reverse(node_t* node)	// need to pass last node
 {
 	printf("complete list in reverse\n");
 	node_t* current;
@@ -81,4 +83,16 @@ node_t* create_node(int data, node_t* next)
 void remove_node(node_t* node)
 {
 
+}
+
+void free_list(node_t* node)
+{
+	node_t* current = node;
+	while(current != NULL)
+	{
+		current = node;	
+		node = node->next;
+		free(node);
+		//current = node->next;
+	}
 }
