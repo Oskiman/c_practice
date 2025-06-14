@@ -14,70 +14,25 @@ node_t* create_node(int data, node_t* next);
 node_t* add_to_list(node_t* node, int data);
 void remove_node(node_t* node);
 
-// TODO: function to create a new node
-// NOTE: once a node is created it will need to be added to the list
 // TODO: function to remove a given node
 // TODO: refactor code to free nodes - will be part of remove_node() later
 
 int main(void)
 {
-	//create head of linked list
-	node_t* head = NULL;
-	head = (node_t*)malloc(sizeof(node_t));
-	if(head == NULL)
+	node_t* list = create_node(6, create_node(7, create_node(8, 0)));
+
+	node_t* current = list;
+	while(current->next != NULL)
 	{
-		return 1;
+		printf("%d\n", current->data);
+		current = current->next;
+
 	}
 
-	head->data = 1;
-	head->next = NULL;
-
-	// create tail of linked list
-	node_t* tail = NULL;
-	tail = (node_t*)malloc(sizeof(node_t));
-	if(tail == NULL)
-	{
-		return 1;
-	}
-
-	tail->data = 3;
-	tail->next = NULL;
-
-	// join head & tail
-	head->next = tail;
-	tail->prev = head;
-
-	// insert a node inbetween head & tail
-	node_t* middle = NULL;
-	middle = (node_t*)malloc(sizeof(node_t));
-	if(middle == NULL)
-	{
-		return 1;
-	}
-
-	middle->data = 2;
-	head->next = middle;
-	middle->prev = head;
-	middle->next = tail;
-	tail->prev = middle;
-
-	print_forward(head);
-	print_reverse(tail);
-
-	node_t* fourth = create_node(4, 0);
-	node_t* fifth = create_node(5, 0);
-
-	// test we have created nodes
-	printf("%d\n", fourth->data);
-	printf("%d\n", fifth->data);
 
 	// remember to free nodes
 	// will refactor this later
-	free(head);
-	free(middle);
-	free(tail);
-	free(fourth);
-	free(fifth);
+	free(list);
 
 	return 0;
 }
@@ -125,11 +80,6 @@ node_t* create_node(int data, node_t* next)
 	node->next = next;
 
 	return node;
-}
-
-node_t* add_to_list(node_t* node, int data)
-{
-	
 }
 
 void remove_node(node_t* node)
