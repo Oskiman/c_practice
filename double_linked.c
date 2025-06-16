@@ -16,9 +16,7 @@ void remove_node(node_t* node);
 void free_list(node_t* node);
 
 // TODO: function to remove a given node
-// TODO: refactor code to free nodes - will be part of remove_node() later
 // TODO: print list in reverse
-// TODO: function to free all nodes
 
 int main(void)
 {
@@ -93,6 +91,5 @@ void free_list(node_t* node)
 		current = node;	
 		node = node->next;
 		free(current);
-		//current = node->next;
 	}
 }
