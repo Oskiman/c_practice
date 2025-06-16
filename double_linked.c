@@ -88,11 +88,11 @@ void remove_node(node_t* node)
 void free_list(node_t* node)
 {
 	node_t* current = node;
-	while(current != NULL)
+	while(node != NULL)
 	{
 		current = node;	
 		node = node->next;
-		free(node);
+		free(current);
 		//current = node->next;
 	}
 }
