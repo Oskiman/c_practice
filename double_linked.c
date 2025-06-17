@@ -12,14 +12,14 @@ void print_forward(node_t* node);
 void print_reverse(node_t* node);
 node_t* create_node(int data, node_t* prev, node_t* next);
 node_t* add_to_list(int data, node_t* node, node_t* prev, node_t* next);
-void remove_node(node_t* node);
+void remove_node(int data);
 void free_list(node_t* node);
 
 //TODO: remove_node();
 
 int main(void)
 {
-	// create individual nodes
+	// create nodes
 	node_t* head = create_node(1, NULL, NULL);
 	node_t* middle = create_node(2, NULL, NULL);
 	node_t* tail = create_node(3, NULL, NULL);
@@ -32,6 +32,9 @@ int main(void)
 	print_forward(head);
 	printf("\n");
 	print_reverse(tail);
+
+	remove_node(2);
+	print_forward(head);
 
 	// remember to free nodes
 	free_list(head);
@@ -84,9 +87,15 @@ node_t* create_node(int data, node_t* prev, node_t* next)
 	return node;
 }
 
-void remove_node(node_t* node)
+void remove_node(int data)
 {
+	node_t* tmp = head;
+	for(int i = 0; i < data; i++)
+		tmp = tmp->next;
 
+	node_t* tmp2 = tmp->next;
+	tmp->next = tmp2->next;
+	free(tmp2);
 }
 
 void free_list(node_t* node)
