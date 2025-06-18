@@ -89,10 +89,14 @@ node_t* create_node(int data, node_t* prev, node_t* next)
 
 void remove_node(node_t* node)
 {
-	// need a NULL check here?
-	node->prev->next = node->next;
-	// here too?
-	node->next->prev = node->prev;
+	if(node->prev != NULL)
+	{
+		node->prev->next = node->next;
+	}
+	if(node->next != NULL)
+	{
+		node->next->prev = node->prev;
+	}
 
 	free(node);
 }
