@@ -6,6 +6,12 @@
 void print_board(char** board, int ROWS, int COLS);
 char** allocate_rows(int ROWS);
 
+//TODO: allocate_columns()
+//TODO: populate_board()
+//TODO: refactor allocations to gt rid of unneeded elements
+//TODO: figure out return value if allocation fails
+//TODO; other stuff I haven't even thought about yet
+//TODO; replace '*'s with R, B, K, P, X as a visual aid
 int main(void)
 {
 	const int ROWS = 4;
