@@ -7,12 +7,11 @@ void print_board(char** board, int ROWS, int COLS);
 char** allocate_rows(int ROWS);
 char** allocate_cols(int COLS);
 
-//TODO: allocate_columns()
-//TODO: populate_board()
-//TODO: refactor allocations to gt rid of unneeded elements
+//TODO: allocate_cols()
+//TODO: refactor allocations to get rid of unneeded elements
 //TODO: figure out return value if allocation fails
 //TODO; other stuff I haven't even thought about yet
-//TODO; replace '*'s with R, B, K, P, X as a visual aid
+//TODO: got a memory leak!
 
 int main(void)
 {
@@ -44,22 +43,22 @@ int main(void)
 	{
 		for(int j = 0; j < ROWS; j++)
 		{
-			//if i == 0 && j == 1 , 2, 3
-			//then print ' '
-			//if i == 4 && j = 0, 1, 2
-			//then print ' '
-			//if i == 0 && j == 0
-			//print R
-			//if i == 1
-			//then print B
-			//if i == 2
-			//then print K
-			//if i == 3
-			//then print P
-			//if i == 4 && j == 0, 1, 2
-			//print ' '
-			//if i == 4 && j == 3 print X
-			board[i][j] = '*';
+			if(i == 0 && j == 0)
+				board[i][j] = 'R';
+			if(i == 0 && j == 1 || i == 0 && j == 2 || i == 0 && j == 3)
+				board[i][j] = ' ';
+			if(i == 4 && j == 0 || i == 4 && j == 1 || i == 4 && j == 2)
+				board[i][j] = ' ';
+			if(i == 1)
+				board[i][j] = 'B';
+			if(i == 2)
+				board[i][j] = 'K';
+			if(i == 3)
+				board[i][j] = 'P';
+			if(i == 4 && j == 0 || i == 4 && j == 1 || i == 4 &&  j == 2)
+				board[i][j] = ' ';
+			if(i == 4 && j == 3)
+				board[i][j] = 'X';
 		}
 	}
 
