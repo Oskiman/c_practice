@@ -12,9 +12,10 @@ char** allocate_rows(int ROWS);
 //TODO: figure out return value if allocation fails
 //TODO; other stuff I haven't even thought about yet
 //TODO; replace '*'s with R, B, K, P, X as a visual aid
+
 int main(void)
 {
-	const int ROWS = 4;
+	const int ROWS = 5;
 	const int COLS = 4;
 
 	char** board = allocate_rows(ROWS);
@@ -45,10 +46,25 @@ int main(void)
 	}
 	
 	// populate board
-	for(int i = 0; i < COLS; i++)
+	for(int i = 0; i < COLS; i++)	// I may have these the wrong way round?
 	{
 		for(int j = 0; j < ROWS; j++)
 		{
+			//if i == 0 && j == 1 , 2, 3
+			//then print ' '
+			//if i == 4 && j = 0, 1, 2
+			//then print ' '
+			//if i == 0 && j == 0
+			//print R
+			//if i == 1
+			//then print B
+			//if i == 2
+			//then print K
+			//if i == 3
+			//then print P
+			//if i == 4 && j == 0, 1, 2
+			//print ' '
+			//if i == 4 && j == 3 print X
 			board[i][j] = '*';
 		}
 	}
