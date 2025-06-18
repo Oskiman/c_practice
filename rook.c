@@ -1,0 +1,87 @@
+// Rook puzzle
+// valgrind --leak-check=yes ./rook
+#include <stdio.h>
+#include <stdlib.h>
+
+void print_board(char** board, int ROWS, int COLS);
+char** allocate_rows(int ROWS);
+
+int main(void)
+{
+	const int ROWS = 4;
+	const int COLS = 4;
+
+	char** board = allocate_rows(ROWS);
+	// allocate memory for rows
+//	char** board = (char**)malloc(ROWS * sizeof(char*));
+//	if(board == NULL)
+//	{
+//		printf("Memory allocation for rows failed!\n");
+//		return 1;
+//	}
+
+	// allocate memory for columns
+	for(int i = 0; i < COLS; i++)
+	{
+		board[i] = (char*)malloc(COLS * sizeof(char*));
+		if(board[i] == NULL)
+		{
+			printf("Memory allocation for columns failed!\n");
+			//free columns
+			for(int j = 0; j < COLS; j++)
+			{
+				free(board[j]);
+			}
+
+			free(board);
+			return 1;
+		}
+	}
+	
+	// populate board
+	for(int i = 0; i < COLS; i++)
+	{
+		for(int j = 0; j < ROWS; j++)
+		{
+			board[i][j] = '*';
+		}
+	}
+
+	print_board(board, ROWS, COLS);
+
+	// free columns
+	for(int i = 0; i < ROWS; i++)
+	{
+		free(board[i]);
+	}
+
+	// free rest
+	free(board);
+
+	return 0;
+}
+
+char** allocate_rows(int ROWS)
+{
+	char** board = (char**)malloc(ROWS * sizeof(char*));
+	if(board == NULL)
+	{
+		printf("Memory allocation for rows failed!\n");
+		return 1;
+	}
+
+	return board;
+}
+
+void print_board(char** board, int ROWS, int COLS)
+{
+	for(int i = 0; i < COLS; i++)
+	{
+		for(int j = 0; j < COLS; j++)
+		{
+			printf("%c", board[i][j]);
+		}
+
+		printf("\n");
+	}
+}
