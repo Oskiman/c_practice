@@ -5,6 +5,7 @@
 
 void print_board(char** board, int ROWS, int COLS);
 char** allocate_rows(int ROWS);
+char** allocate_cols(int COLS);
 
 //TODO: allocate_columns()
 //TODO: populate_board()
@@ -15,26 +16,19 @@ char** allocate_rows(int ROWS);
 
 int main(void)
 {
-	const int ROWS = 5;
-	const int COLS = 4;
+	const int ROWS = 4;
+	const int COLS = 5;
 
 	char** board = allocate_rows(ROWS);
-	// allocate memory for rows
-//	char** board = (char**)malloc(ROWS * sizeof(char*));
-//	if(board == NULL)
-//	{
-//		printf("Memory allocation for rows failed!\n");
-//		return 1;
-//	}
-
-	// allocate memory for columns
+	
+	// allocate memory for cols
 	for(int i = 0; i < COLS; i++)
 	{
 		board[i] = (char*)malloc(COLS * sizeof(char*));
 		if(board[i] == NULL)
 		{
 			printf("Memory allocation for columns failed!\n");
-			//free columns
+			//free cols
 			for(int j = 0; j < COLS; j++)
 			{
 				free(board[j]);
@@ -46,7 +40,7 @@ int main(void)
 	}
 	
 	// populate board
-	for(int i = 0; i < COLS; i++)	// I may have these the wrong way round?
+	for(int i = 0; i < COLS; i++)
 	{
 		for(int j = 0; j < ROWS; j++)
 		{
@@ -95,11 +89,16 @@ char** allocate_rows(int ROWS)
 	return board;
 }
 
+char** allocate_cols(int COLS)
+{
+	
+}
+
 void print_board(char** board, int ROWS, int COLS)
 {
 	for(int i = 0; i < COLS; i++)
 	{
-		for(int j = 0; j < COLS; j++)
+		for(int j = 0; j < ROWS; j++)
 		{
 			printf("%c", board[i][j]);
 		}
