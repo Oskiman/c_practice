@@ -5,9 +5,8 @@
 
 void print_board(char** board, int ROWS, int COLS);
 char** allocate_rows(int ROWS);
-char** allocate_cols(int COLS);
+char** allocate_cols(char** board, int COLS);
 
-//TODO: allocate_cols()
 //TODO: refactor allocations to get rid of unneeded elements
 //TODO: figure out return value if allocation fails
 //TODO: populate_board()
@@ -20,25 +19,8 @@ int main(void)
 	const int COLS = 5;
 
 	char** board = allocate_rows(ROWS);
-	
-	// allocate memory for cols
-	for(int i = 0; i < COLS; i++)
-	{
-		board[i] = (char*)malloc(COLS * sizeof(char*));
-		if(board[i] == NULL)
-		{
-			printf("Memory allocation for columns failed!\n");
-			//free cols
-			for(int j = 0; j < COLS; j++)
-			{
-				free(board[j]);
-			}
+	board = allocate_cols(board, COLS);
 
-			free(board);
-			return 1;
-		}
-	}
-	
 	// populate board
 	for(int i = 0; i < COLS; i++)
 	{
@@ -89,9 +71,26 @@ char** allocate_rows(int ROWS)
 	return board;
 }
 
-char** allocate_cols(int COLS)
+char** allocate_cols(char** board, int COLS)
 {
-	
+	for(int i = 0; i < COLS; i++)
+	{
+		board[i] = (char*)malloc(COLS * sizeof(char*));
+		if(board[i] == NULL)
+		{
+			printf("Memory allocation for columns failed!\n");
+			//free cols
+			for(int j = 0; j < COLS; j++)
+			{
+				free(board[j]);
+			}
+
+			free(board);
+			return 1;
+		}
+	}
+
+	return board;
 }
 
 void print_board(char** board, int ROWS, int COLS)
