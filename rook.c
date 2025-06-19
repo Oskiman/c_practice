@@ -6,11 +6,10 @@
 void print_board(char** board, int ROWS, int COLS);
 char** allocate_rows(int ROWS);
 char** allocate_cols(char** board, int COLS);
+char** populate_board(char** board, int COLS, int ROWS);
 
 //TODO: refactor allocations to get rid of unneeded elements
 //TODO: figure out return value if allocation fails
-//TODO: populate_board()
-//TODO: print_board()
 //TODO: figure out way to update board - different function()?
 
 int main(void)
@@ -20,31 +19,7 @@ int main(void)
 
 	char** board = allocate_rows(ROWS);
 	board = allocate_cols(board, COLS);
-
-	// populate board
-	for(int i = 0; i < COLS; i++)
-	{
-		for(int j = 0; j < ROWS; j++)
-		{
-			if(i == 0 && j == 0)
-				board[i][j] = 'R';
-			if(i == 0 && j == 1 || i == 0 && j == 2 || i == 0 && j == 3)
-				board[i][j] = ' ';
-			if(i == 4 && j == 0 || i == 4 && j == 1 || i == 4 && j == 2)
-				board[i][j] = ' ';
-			if(i == 1)
-				board[i][j] = 'B';
-			if(i == 2)
-				board[i][j] = 'K';
-			if(i == 3)
-				board[i][j] = 'P';
-			if(i == 4 && j == 0 || i == 4 && j == 1 || i == 4 &&  j == 2)
-				board[i][j] = ' ';
-			if(i == 4 && j == 3)
-				board[i][j] = 'X';
-		}
-	}
-
+	board = populate_board(board, COLS, ROWS);
 	print_board(board, ROWS, COLS);
 
 	// free columns
@@ -105,3 +80,34 @@ void print_board(char** board, int ROWS, int COLS)
 		printf("\n");
 	}
 }
+
+
+char** populate_board(char** board, int COLS, int ROWS)
+{
+	for(int i = 0; i < COLS; i++)
+	{
+		for(int j = 0; j < ROWS; j++)
+		{
+			if(i == 0 && j == 0)
+				board[i][j] = 'R';
+			if(i == 0 && j == 1 || i == 0 && j == 2 || i == 0 && j == 3)
+				board[i][j] = ' ';
+			if(i == 4 && j == 0 || i == 4 && j == 1 || i == 4 && j == 2)
+				board[i][j] = ' ';
+			if(i == 1)
+				board[i][j] = 'B';
+			if(i == 2)
+				board[i][j] = 'K';
+			if(i == 3)
+				board[i][j] = 'P';
+			if(i == 4 && j == 0 || i == 4 && j == 1 || i == 4 &&  j == 2)
+				board[i][j] = ' ';
+			if(i == 4 && j == 3)
+				board[i][j] = 'X';
+		}
+	}
+	
+	return board;
+
+}
+
