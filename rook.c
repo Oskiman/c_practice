@@ -10,8 +10,9 @@ char** allocate_cols(int COLS);
 //TODO: allocate_cols()
 //TODO: refactor allocations to get rid of unneeded elements
 //TODO: figure out return value if allocation fails
-//TODO; other stuff I haven't even thought about yet
-//TODO: got a memory leak!
+//TODO: populate_board()
+//TODO: print_board()
+//TODO: figure out way to update board - different function()?
 
 int main(void)
 {
@@ -65,7 +66,7 @@ int main(void)
 	print_board(board, ROWS, COLS);
 
 	// free columns
-	for(int i = 0; i < ROWS; i++)
+	for(int i = 0; i < COLS; i++)
 	{
 		free(board[i]);
 	}
