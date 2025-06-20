@@ -11,7 +11,8 @@ char** populate_board(char** board, int COLS, int ROWS);
 //TODO: refactor allocations to get rid of unneeded elements
 //TODO: figure out return value if allocation fails
 //TODO: figure out way to update board - different function()?
-
+//TODO: open a new window to print board to
+//
 int main(void)
 {
 	const int ROWS = 4;
@@ -40,7 +41,7 @@ char** allocate_rows(int ROWS)
 	if(board == NULL)
 	{
 		printf("Memory allocation for rows failed!\n");
-		return 1;
+		exit(1);
 	}
 
 	return board;
@@ -61,7 +62,7 @@ char** allocate_cols(char** board, int COLS)
 			}
 
 			free(board);
-			return 1;
+			exit(1);
 		}
 	}
 
