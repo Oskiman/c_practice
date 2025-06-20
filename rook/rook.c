@@ -9,7 +9,6 @@ char** allocate_cols(char** board, int COLS);
 char** populate_board(char** board, int COLS, int ROWS);
 
 //TODO: refactor allocations to get rid of unneeded elements
-//TODO: figure out return value if allocation fails
 //TODO: figure out way to update board - different function()?
 //TODO: open a new window to print board to
 //
@@ -93,8 +92,6 @@ char** populate_board(char** board, int COLS, int ROWS)
 				board[i][j] = 'R';
 			if(i == 0 && j == 1 || i == 0 && j == 2 || i == 0 && j == 3)
 				board[i][j] = ' ';
-			if(i == 4 && j == 0 || i == 4 && j == 1 || i == 4 && j == 2)
-				board[i][j] = ' ';
 			if(i == 1)
 				board[i][j] = 'B';
 			if(i == 2)
@@ -102,6 +99,8 @@ char** populate_board(char** board, int COLS, int ROWS)
 			if(i == 3)
 				board[i][j] = 'P';
 			if(i == 4 && j == 0 || i == 4 && j == 1 || i == 4 &&  j == 2)
+				board[i][j] = ' ';
+			if(i == 4 && j == 0 || i == 4 && j == 1 || i == 4 && j == 2)
 				board[i][j] = ' ';
 			if(i == 4 && j == 3)
 				board[i][j] = 'X';
