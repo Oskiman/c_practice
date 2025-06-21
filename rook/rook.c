@@ -2,7 +2,6 @@
 // valgrind --leak-check=yes ./rook
 #include <stdio.h>
 #include <stdlib.h>
-#include "rook.h"
 #include "header.h"
 
 void print_board(char** board, int ROWS, int COLS);
