@@ -7,7 +7,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include "header.h"
 
 int main(void)
 {
