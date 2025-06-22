@@ -1,7 +1,7 @@
 // pointer to a struct
 #include <stdio.h>
 
-typedef struct test{
+typedef struct{
 	int x;
 	int y;
 	int z;
