@@ -4,18 +4,20 @@
 #include <X11/Xlib.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 int main(void)
 {
 	Display* display;	// pointer to our display
 	char *display_name = getenv("DISPLAY");	// location of display server, hostname:D.S - D is sequence number, usually 0, S is screen number
+	Window win;
 	XEvent e;
 	const char* msg = "Hello";
 	display = XOpenDisplay(display_name); // call xopen display
 	if(display == NULL)
 	{
-		printf("Cannot connect to x server %s.\n", display_name);
-		exit(-1);
+		fprintf(stderr, "Cannot connect to x server %s.\n", display_name);
+		exit(1);
 	}
 
 	int screen_num;
@@ -45,9 +47,7 @@ int main(void)
 	black_pixel = BlackPixel(display, screen_num);
 	white_pixel = WhitePixel(display, screen_num);
 
-	// store ID of new window
-	Window win;
-
+	// window sizes
 	int win_width;
 	int win_height;
 	int win_border_width;
@@ -76,6 +76,11 @@ int main(void)
 
 	while(1){
 		XNextEvent(display, &e);
+		if(e.type == Expose)
+		{
+			XFillRectangle(display, win, DefaultGC(display, screen_num), 50, 50, 25, 25);
+			XDrawString(display, win, DefaultGC(display, screen_num), 10, 50, msg, strlen(msg));
+		}
 		if(e.type == KeyPress)
 			break;
 
