@@ -4,13 +4,13 @@
 #include <X11/Xlib.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>	// for sleep()
 
 int main(void)
 {
 	Display* display;	// pointer to our display
 	char *display_name = getenv("DISPLAY");	// location of display server, hostname:D.S - D is sequence number, usually 0, S is screen number
-	
+	XEvent e;
+	const char* msg = "Hello";
 	display = XOpenDisplay(display_name); // call xopen display
 	if(display == NULL)
 	{
@@ -74,7 +74,13 @@ int main(void)
 	XFlush(display);
 	XSync(display, False);
 
-	for(;;) {sleep(1);}	// endless loop so window stays open until manually closed still need to use ctrl-c too
+	while(1){
+		XNextEvent(display, &e);
+		if(e.type == KeyPress)
+			break;
+
+	};
+
 	XCloseDisplay(display);
 
 
