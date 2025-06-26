@@ -12,8 +12,7 @@ int main(void)
 	char *display_name = getenv("DISPLAY");	// location of display server, hostname:D.S - D is sequence number, usually 0, S is screen number
 	Window win;
 	XEvent e;
-	//GC gc = XCreateGC(display, win, 0,0);
-	const char* msg = "Hello";
+	const char* msg = "Hello, World!";
 	display = XOpenDisplay(display_name);	// call xopen display
 	if(display == NULL)
 	{
@@ -71,6 +70,7 @@ int main(void)
 	// create window
 	win = XCreateSimpleWindow(display, RootWindow(display, screen_num), win_x, win_y, win_width, win_height, win_border_width, BlackPixel(display, screen_num), WhitePixel(display, screen_num));
 
+	XSelectInput(display, win, ExposureMask | KeyPressMask);
 	XMapWindow(display, win);
 	XFlush(display);
 	XSync(display, False);
@@ -79,8 +79,8 @@ int main(void)
 		XNextEvent(display, &e);
 		if(e.type == Expose)
 		{
-			XFillRectangle(display, win, DefaultGC(display, screen_num), 50, 50, 25, 25);
-			XDrawString(display, win, DefaultGC(display, screen_num), 10, 50, msg, strlen(msg));
+			//XFillRectangle(display, win, DefaultGC(display, screen_num), 50, 50, 25, 25);
+			XDrawString(display, win, DefaultGC(display, screen_num), 100, 200, msg, strlen(msg));
 		}
 		if(e.type == KeyPress)
 			break;
