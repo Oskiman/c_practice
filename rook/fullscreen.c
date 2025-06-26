@@ -12,8 +12,9 @@ int main(void)
 	char *display_name = getenv("DISPLAY");	// location of display server, hostname:D.S - D is sequence number, usually 0, S is screen number
 	Window win;
 	XEvent e;
+	//GC gc = XCreateGC(display, win, 0,0);
 	const char* msg = "Hello";
-	display = XOpenDisplay(display_name); // call xopen display
+	display = XOpenDisplay(display_name);	// call xopen display
 	if(display == NULL)
 	{
 		fprintf(stderr, "Cannot connect to x server %s.\n", display_name);
