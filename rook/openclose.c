@@ -1,4 +1,4 @@
-// code from 'Basic grpahics programming with the xlib library' pdf by Guy Keren
+// code from 'Basic graphics programming with the xlib library' pdf by Guy Keren
 // and also from https://github.com/pietroiusti/xlib_basic_programming/blob/master/03_Creating_A_Basic_Window.c
 // open/close connection to xserver
 // compile with -lX11 flag
