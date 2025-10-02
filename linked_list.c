@@ -7,6 +7,8 @@ typedef struct node{
 	struct node* next;
 } node_t;
 
+void free_list(node_t* node);
+
 int main(void)
 {
 	//create head of linked list
@@ -63,5 +65,19 @@ int main(void)
 		
 	}
 
+	free_list(head);
+
 	return 0;
+}
+
+
+void free_list(node_t* node)
+{
+	node_t* current = node;
+	while(node != NULL)
+	{
+		current = node;	
+		node = node->next;
+		free(current);
+	}
 }
