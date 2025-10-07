@@ -27,6 +27,9 @@ int main(void)
 	// join head to node1
 	head->next = node1;
 
+	// join node1 to node3
+	node1->next = node3;
+
 	// output head & tail data values
 	output_list(head);
 
@@ -61,8 +64,15 @@ void output_list(node_t* node)
 	node_t* current = node;
 	while(current != NULL)
 	{
-		printf("%d\n", current->data);
-		current = current->next;	// move to next node
+		if(current->data == 0)
+		{
+			current = current->next;	// we avoid outputting the 0 from the head node
+		}
+		else
+		{
+			printf("%d\n", current->data);
+			current = current->next;	// move to next node
+		}
 	}	
 }
 
