@@ -8,6 +8,7 @@ typedef struct node{
 } node_t;
 
 void free_list(node_t* node);
+void output_list(node_t* node);
 
 int main(void)
 {
@@ -19,22 +20,29 @@ int main(void)
 		return 1;
 	}
 
-	head->data = 1;
-	head->next = NULL;
+	// create first node in list for head to point to
+	node_t* node1 = NULL;
+	node1 = (node_t*)malloc(sizeof(node_t));
+	if(node1 == NULL)
+	{
+		return 1;
+	}
+	node1->data = 1;
+	node1->next = NULL;
 
-	// create tail of linked list
-	node_t* tail = NULL;
-	tail = (node_t*)malloc(sizeof(node_t));
-	if(tail == NULL)
+	// create third node in list
+	node_t* node3 = NULL;
+	node3 = (node_t*)malloc(sizeof(node_t));
+	if(node3 == NULL)
 	{
 		return 1;
 	}
 
-	tail->data = 3;
-	tail->next = NULL;
+	node3->data = 3;
+	node3->next = NULL;
 
-	// join head & tail
-	head->next = tail;
+	// join head to node1
+	head->next = node1;
 
 	// output head & tail data values
 	node_t* current = head;		// create node to walk the list
@@ -45,25 +53,18 @@ int main(void)
 	}
 
 	// insert a node inbetween head & tail
-	node_t* middle = NULL;
-	middle = (node_t*)malloc(sizeof(node_t));
-	if(middle == NULL)
+	node_t* node2 = NULL;
+	node2 = (node_t*)malloc(sizeof(node_t));
+	if(node2 == NULL)
 	{
 		return 1;
 	}
 
-	middle->data = 2;
-	head->next = middle;
-	middle->next = tail;
+	node2->data = 2;
+	node1->next = node2;
+	node2->next = node3;
 
-	// output complete list
-	current = head;		//reuse previously created node
-	while(current != NULL)
-	{
-		printf("%d\n", current->data);
-		current = current->next;	// move to next node
-		
-	}
+	output_list(head);
 
 	free_list(head);
 
@@ -80,4 +81,15 @@ void free_list(node_t* node)
 		node = node->next;
 		free(current);
 	}
+}
+
+void output_list(node_t* node)
+{
+	// output complete list
+	node_t* current = node;
+	while(current != NULL)
+	{
+		printf("%d\n", current->data);
+		current = current->next;	// move to next node
+	}	
 }
